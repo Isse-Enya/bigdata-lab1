@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# HdfsOps 启动脚本：拼好 Hadoop 的 classpath 后调用 HDFS Java API 程序。
+DIR=$(cd "$(dirname "$0")/.." && pwd)
+CP="$DIR/build:$(hadoop classpath)"
+exec java -Dhadoop.root.logger=ERROR,console -cp "$CP" HdfsOps "$@"
